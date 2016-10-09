@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    /*
+     *浏览器的事件处理有哪些兼容处理
+     * 1、e=window.event||e   事件对象的获得方式不同
+     * IE浏览器是通过一个全局对象得到事件对象 window.event;标准浏览器是当事件触发的时候，浏览器会自动的绑定到此事件上的方法传一个事件对象做参数，从而得到事件对象
+     * ele.onclick=function(){
+     e=window.event||e
+     }
+     *2、事件源  IE是e.target  标准浏览器是e.srcElement;
+     *3、阻止事件的默认行为的方法不一样
+     * 标准浏览器用e.preventDefault();IE用的是e.returnValue=false;
+     * 4、事件传播的方式和停止事件传播的方法方式不一样
+     * 标准浏览器用e.stopPropagation(),IE是 e.cancelBubble=true;
+     * 5、IE浏览器不支持这两个属性 e.pageX/Y 鼠标距离文档顶端的距离;如果让IE浏览器也得到和pageX/Y一样的值。写法如下：
+     (document.documentElement.scrollLeft||document.body.scrollLeft)+e.clientX
+     (document.documentElement.scrollTop||document.body.scrollTop)+e.clientY
+     6、DOM2级事件绑定的不同；
+     6.1绑定事件和移出事件的方法不同
+     标准浏览器 ele.addEventListener 和ele.removeEventListener
+     IE  ele.attachEvent 和ele.detachEvent
+     6.2 IE中被绑定到事件山的方法在执行的时候，this不指向当前元素，而是指向的window
+     6.3 IE中 一个方法可以被重复的绑定到同一个事件上
+     6.4绑定的方法执行顺序问题
+     * */
+
+
+</script>
+</body>
+</html>

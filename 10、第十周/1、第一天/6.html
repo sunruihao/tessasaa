@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="appModule">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<!--要循环谁，就在谁身上写指令-->
+<div ng-controller="myCtr">
+    <!--<ul>-->
+    <!--<li ng-repeat="(key,value) in arrs track by $index">-->
+    <!--&lt;!&ndash;在数组中遍历时，最好加track by $index，防止循环是无法通过不是唯一的值遍历&ndash;&gt;-->
+    <!--{{value}}{{$index}}-->
+    <!--&lt;!&ndash;{{$even}}{{$odd}}{{$first}}{{$last}}&ndash;&gt;-->
+    <!--</li>-->
+    <!--</ul>-->
+    <!--<ul>
+        <li ng-repeat="aa in phones track by $index">
+            {{aa.name}}
+            <ul>
+                <li ng-repeat="t in aa.type track by $index">
+                    {{t}}
+                </li>
+            </ul>
+        </li>
+    </ul>-->
+    <ul>
+        <li ng-repeat="aa in phones track by $index" ng-init="parent">
+            {{aa.name}}
+            <ul>
+                <li ng-repeat="t in aa.type track by $index">
+                    {{t}}{{parent}}
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+<div ng-controller="myCtr">
+    <li ng-repeat="(key,o) in obj">
+        {{key}} {{o}};
+    </li>
+</div>
+<!--ng-repeat 会创建作用域-->
+<script src="node_modules/angular/angular.js"></script>
+<script>
+    var app = angular.module('appModule', []);
+    app.controller('myCtr', function ($scope) {
+        $scope.arrs = ["苹果", "苹果", "小米"];
+        $scope.phones = [{name: '苹果', type: ['白色', '金色', '灰色']}, {name: '小米', type: ['白色', '黑色', '灰色']}, {
+            name: '华为',
+            type: ['白色', '蓝色']
+        }];
+        $scope.obj = {
+            name:'zf',
+            age:108,
+            address:'回龙观路边'
+        }
+    })
+// 无论是对象还是数组通过for in 取出来的永远是我们的value
+
+</script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html ng-app="zfModule">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        /*[ng-cloak] {*/
+            /*display: none;*/
+        /*}*/
+    </style>
+</head>
+<body>
+<div ng-controller="ctrl">
+    {{fn()}};
+    {{age}};
+    <button ng-click="fn()">增加年龄</button>
+</div>
+
+<script src="node_modules/angular/angular.js"></script>
+<script>
+    var app = angular.module('zfModule', []);
+    app.controller('ctrl',  function ($scope) {
+        $scope.fn = function () {
+            $scope.age = 1;
+            $scope.add = function () {
+                age++;
+            }
+//            console.log(1);//输出两次；
+            return 100;//双向绑定是通过脏值检查来做的，如果数据变了脏值检查至少要两次
+        }
+    })
+</script>
+</body>
+</html>

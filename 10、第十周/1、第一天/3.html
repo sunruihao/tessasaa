@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html ng-app="zfModule">
+<head lang="en" >
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div ng-controller="ctrl1">
+    {{name}}
+</div>
+
+{{name}}
+<script src="node_modules/angular/angular.js"></script>
+<script>
+    /*angulers.js一切从模块化开发  通过angular对象创建模块*/
+    //parame1 模块的名字 如果启动模块则需要和我们的app的名字相同
+    //parame2 依赖的模块  如果没有需要用空数组站位，不写空数组标识获取，写了才是创建
+    //parame3 配置函数
+    angular.module('zfModule', []);
+    //通过模块来创建我们的控制器
+    //第一个名字为控制器的名字，第二个为控制器的函数
+    //买一送一 送一个$scope 作用域
+    angular.module('zfModule').controller('ctrl1', function ($scope) {
+        //$scope作用域
+        $scope.name = 'zfpx'
+    })
+    //告诉作用域应用到哪里
+</script>
+</body>
+</html>
